@@ -8,5 +8,8 @@
   <%= f.label :level_of_interest %>
   <%= f.number_field :level_of_interest %>
 
+  <%= f.label :category %>
+  <%= f.collection_select(:category_id, Category.all.order(:title), :id, :title, options = {:prompt => "Select a Category"}) %>
+
   <%= f.submit %>
 <% end %>

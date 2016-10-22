@@ -15,10 +15,8 @@ Category: <%= link_to @job.category.title, category_path(@job.category) if @job.
 
 
 
-
 <h3>Comments</h3>
 <%= render partial: 'jobs/comment', collection: @job.comments %>
-
 
 
 

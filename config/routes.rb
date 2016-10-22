@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create]
 
+  resources :contacts, only: [:create]
+
   # resources :comments do
   #   resources :jobs
   # end

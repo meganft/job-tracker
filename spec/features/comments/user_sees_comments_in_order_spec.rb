@@ -7,12 +7,16 @@ describe "User creates a new comment" do
 
     visit company_job_path(job.company, job)
 
-    fill_in "comment[content]", with: "New Commment!"
+    fill_in "comment[content]", with: "First Comment!"
+    click_button "Submit"
 
+    fill_in "comment[content]", with: "Second Comment!"
     click_button "Submit"
 
     expect(page).to have_content("You created a comment")
-    expect(Comment.count).to eq(1)
+    expect(Comment.count).to eq(2)
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
+    expect("Second Comment").to appear_before("First Comment")
   end
+
 end

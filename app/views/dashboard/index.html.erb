@@ -1,0 +1,20 @@
+<h1> Job Tracker Dashboard </h1>
+
+<h2>Count of jobs by level of interest</h2>
+<% @jobs.level_of_interest_maker.each do |job| %>
+<%= job %><br>
+<% end %>
+
+<h2>Top Three Companies by Level of Interest</h2>
+<% @jobs.top_three_interest_level_companies.each do |job| %>
+<%= job %><br>
+<% end %><br>
+<br>
+
+<!--
+only showing the count of companies in each city, change to be jobs -->
+<h2>Count of jobs by location</h2>
+<% @companies.location_companies.each do |company| %>
+<%= company %>
+<%= link_to("companies?location=#{company}") %><br>
+<% end %><br>

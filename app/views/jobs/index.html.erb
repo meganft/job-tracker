@@ -1,18 +1,28 @@
 All Jobs for <strong><%= @company.name %></strong>
 
+<% if params[:sort] %>
+<h3>Jobs sorted by interest are</h3>
+<% @jobs.each do |job| %>
+<%= job.title %>, <%= job.level_of_interest %><br>
+<% end %><br>
+
+<% else %>
 <% @jobs.each do |job| %>
 <ul class=job>
   <%= link_to job.title,  company_job_path(@company, job) %>  <%= job.company.name %>
   <%= link_to "Edit #{job.title} Job", edit_company_job_path(@company, job) %>
   <%= link_to "Delete", company_job_path(@company, job), method: :delete %></ul>
 <% end %>
+<% end %>
 
 <%= link_to "New Job", new_company_job_path %>
 
 <div class="contacts">
-<h3>Contacts</h3>
+
+<h2>Contacts for this company</h2>
 <%= render partial: 'jobs/contact', collection: @company.contacts %>
 </div>
+
 
 <div class="newcontact">
 <%= render partial: 'contacts/form' %>

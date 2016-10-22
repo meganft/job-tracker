@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:create]
 
+  resources :dashboard, only: [:index]
+
   # resources :comments do
   #   resources :jobs
   # end

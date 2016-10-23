@@ -4,10 +4,8 @@ class Company < ActiveRecord::Base
   has_many :jobs
   has_many :contacts
 
-  def self.location_companies
-    grouped = group(:city).count
-    grouped.map do |city, count|
-      "There are #{count} jobs in #{city}"
-    end
+  def self.location_of_jobs_counter
+    joins(:jobs).group(:city).order('count_id desc').count('id')
   end
+
 end

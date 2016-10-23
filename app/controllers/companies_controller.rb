@@ -1,7 +1,16 @@
 class CompaniesController < ApplicationController
+
   def index
     @companies = Company.all
-
+    if params[:location]
+      @city = params[:location]
+      @companies_by_location = Company.where(city: @city)
+      render :one_location
+    elsif params[:sort] == "location"
+      render :location_companies
+    else params[:sort].nil?
+      render :index
+    end
   end
 
   def new
@@ -41,15 +50,18 @@ class CompaniesController < ApplicationController
   def destroy
     company = Company.find(params[:id])
     company.delete
-
     flash[:success] = "#{company.name} was successfully deleted!"
     redirect_to companies_path
   end
 
+private
 
-  private
+  def city_params
+    return :city if params[:sort] == "location"
+  end
 
   def company_params
     params.require(:company).permit(:name, :city)
   end
+
 end

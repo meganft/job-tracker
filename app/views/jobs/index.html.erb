@@ -1,29 +1,22 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h2 align="center" class="jumbotron">All Jobs for <strong><%= @company.name %></strong></h2>
 
-<% if params[:sort] %>
-<h3>Jobs sorted by interest are</h3>
-<% @jobs.each do |job| %>
-<%= job.title %>, <%= job.level_of_interest %><br>
-<% end %><br>
-
-<% else %>
 <% @jobs.each do |job| %>
 <ul class=job>
-  <%= link_to job.title,  company_job_path(@company, job) %>  <%= job.company.name %>
-  <%= link_to "Edit #{job.title} Job", edit_company_job_path(@company, job) %>
-  <%= link_to "Delete", company_job_path(@company, job), method: :delete %></ul>
-<% end %>
-<% end %>
+  <strong><%= link_to job.title,  company_job_path(@company, job) %> </strong> position at <%= job.company.name %><br>
+  <%= link_to "Edit this job", edit_company_job_path(@company, job) %><br>
+  <%= link_to "Delete this job", company_job_path(@company, job), method: :delete %></ul>
+  <% end %><br>
 
-<%= link_to "New Job", new_company_job_path %>
+  <ul>
+    <%= link_to "Add a New Job for #{@company.name}!", new_company_job_path %>
+    <hr>
+    <div class="contacts">
+      <h3>Contacts for <%= @company.name %>:</h3>
+      <%= render partial: 'jobs/contact', collection: @company.contacts %>
+    </div>
 
-<div class="contacts">
-
-<h2>Contacts for this company</h2>
-<%= render partial: 'jobs/contact', collection: @company.contacts %>
-</div>
-
-
-<div class="newcontact">
-<%= render partial: 'contacts/form' %>
-</div>
+    <hr>
+    <div class="newcontact">
+      <%= render partial: 'contacts/form' %>
+    </div>
+  </ul>

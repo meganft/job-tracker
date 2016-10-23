@@ -1,22 +1,15 @@
-<h3>All Companies</h3>
+<h2 align="center">All Companies</h2><br>
 
-<% if params[:sort] %>
-<% @companies.each do |company| %>
-Jobs in <%= company.city %> are:
-<% company.jobs.each do |job| %><br>
-<%= link_to job.title, company_job_path(company, job) %>
-<% end %><br>
-<% end %>
 
-<% else %>
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
+  <strong><u> <%= link_to company.name, company_path(company) %></strong> - <%= company.city %></u><br>
+    <%= link_to "Edit #{company.name}", edit_company_path(company) %><br>
+    <%= link_to "Delete #{company.name}", company_path(company), method: "delete" %>
   </ul>
 <% end %>
 
-<% end %>
-
-<%= link_to "New Company", new_company_path %>
+<br>
+<ul>
+<%= link_to "Add a New Company!", new_company_path %>
+</ul>

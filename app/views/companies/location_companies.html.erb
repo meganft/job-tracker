@@ -1,0 +1,8 @@
+
+
+  <% @companies.each do |company| %>
+  Jobs in <%= company.city %> are:
+  <% company.jobs.each do |job| %><br>
+  <%= link_to job.title, company_job_path(company, job) %>
+  <% end %><br>
+<% end %>

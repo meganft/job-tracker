@@ -15,6 +15,4 @@ class Job < ActiveRecord::Base
     end.reverse[0..2]
   end
 
-
-
 end

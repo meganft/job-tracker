@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-
+  
   def index
     @companies = Company.all
     if params[:location]
@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
     redirect_to companies_path
   end
 
-private
+  private
 
   def city_params
     return :city if params[:sort] == "location"

@@ -13,7 +13,7 @@ describe "User creates a new comment" do
     fill_in "comment[content]", with: "Second Comment!"
     click_button "Submit"
 
-    expect(page).to have_content("You created a comment")
+    expect(page).to have_content("You successfully created a comment!")
     expect(Comment.count).to eq(2)
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
     expect("Second Comment").to appear_before("First Comment")

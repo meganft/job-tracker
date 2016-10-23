@@ -8,7 +8,8 @@
   <% end %><br>
 
   <ul>
-    <%= link_to "Add a New Job for #{@company.name}!", new_company_job_path %>
+    <%= link_to "Add a New Job for #{@company.name}!", new_company_job_path %><br><br>
+    <%= link_to "Back to the Company Index", companies_path %>
     <hr>
     <div class="contacts">
       <h3>Contacts for <%= @company.name %>:</h3>

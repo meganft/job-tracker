@@ -6,7 +6,6 @@ describe "User creates a new contact" do
 
     visit company_path(company)
 
-
     fill_in "contact[full_name]", with: "Taylor Swift"
     fill_in "contact[email]", with: "taylor@email.com"
     fill_in "contact[position]", with: "Sales"

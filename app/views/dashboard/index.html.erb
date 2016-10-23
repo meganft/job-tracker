@@ -14,7 +14,7 @@
     <h3>My Top 3 Most Interesting Companies:</h3>
     <% @jobs.sorted_by_interest_level.each do |company_id, interest| %>
     <% company = Company.find(company_id) %>
-    <%= link_to company.name, company_path(company) %> <%= interest.round(2) %> <br>
+    <%= link_to company.name, company_path(company) %>; Interest Level = <%= interest.round(2) %> <br>
     <% end %><br>
     <br>
     <h4><%= link_to "Check out the full company index here.", companies_path %>

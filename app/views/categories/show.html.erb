@@ -1,9 +1,12 @@
-Category: <%= @category.title %><br>
+<div align="center">
+
+<h3>Category: <%= @category.title %></h3><br>
 
 
-Jobs in this category:
+<strong>Jobs in this category:</strong>
 <% @category.jobs.each do |job| %><br>
-<%= job.title %>
+<%= link_to job.title, company_job_path(job.company, job) %>
 <% end %><br>
-
-<%= link_to "Category Index", categories_path %>
+<hr>
+<%= link_to "Back to the Category Index", categories_path %>
+</div>

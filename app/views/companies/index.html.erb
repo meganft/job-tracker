@@ -1,5 +1,6 @@
+<div class="jumbotron">
 <h2 align="center">All Companies</h2><br>
-
+</div>
 
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
@@ -9,7 +10,7 @@
   </ul>
 <% end %>
 
-<br>
+<hr>
 <ul>
 <%= link_to "Add a New Company!", new_company_path %>
 </ul>

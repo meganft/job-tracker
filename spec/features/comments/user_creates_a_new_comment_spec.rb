@@ -11,7 +11,7 @@ describe "User creates a new comment" do
 
     click_button "Submit"
 
-    expect(page).to have_content("You created a comment")
+    expect(page).to have_content("You successfully created a comment!")
     expect(Comment.count).to eq(1)
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
   end

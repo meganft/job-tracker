@@ -1,8 +1,8 @@
 <div align="center">
   <% @companies.each do |company| %>
   <u>Jobs in <%= company.city %> are:</u>
-  <% company.jobs.each do |job| %><br>
-  <%= link_to job.title, company_job_path(company, job) %>
-  <% end %><br>
+    <% company.jobs.each do |job| %><br>
+      <%= link_to job.title, company_job_path(company, job) %>
+      <% end %><br>
   <% end %>
 <div>

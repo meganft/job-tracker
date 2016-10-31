@@ -20,6 +20,7 @@ class JobsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
@@ -37,6 +38,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update

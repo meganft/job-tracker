@@ -6,6 +6,9 @@
   <% @category.jobs.each do |job| %><br>
   <%= link_to job.title, company_job_path(job.company, job) %>
   <% end %><br>
+
   <hr>
+
   <%= link_to "Back to the Category Index", categories_path %>
+  
 </div>

@@ -13,7 +13,7 @@
   <div class="col-md-4" align='center'>
     <h3>My Top 3 Most Interesting Companies:</h3>
     <% @jobs.sorted_by_interest_level.each do |company_id, interest| %>
-    <% company = Company.find(company_id) %>
+    <% company = @companies.find(company_id) %>
     <%= link_to company.name, company_path(company) %>; Interest Level = <%= interest.round(2) %> <br>
     <% end %><br>
     <br>

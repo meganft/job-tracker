@@ -7,18 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Job Tracker</a>
-    </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/companies">Companies</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/categories">Categories</a></li>
-    </div
-  </div>
-</nav>
+<%= render partial: "layouts/navbar" %>
 
 <div class="container">
   <body>

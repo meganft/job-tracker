@@ -25,6 +25,7 @@ class JobsController < ApplicationController
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
+      flash[:error] = "Please fill in all fields."
       render :new
     end
   end
@@ -32,7 +33,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @comment = Comment.new
-    @comment.job_id = @job.id
+    @comment.job = @job
   end
 
   def edit

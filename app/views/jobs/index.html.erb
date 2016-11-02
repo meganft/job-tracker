@@ -1,5 +1,23 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h2 align="center" class="jumbotron">All Jobs for <strong><%= @company.name %></strong></h2>
 
 <% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<ul class=job>
+  <strong><%= link_to job.title,  company_job_path(@company, job) %> </strong> position at <%= job.company.name %><br>
+  <%= link_to "Edit this job", edit_company_job_path(@company, job) %><br>
+  <%= link_to "Delete this job", company_job_path(@company, job), method: :delete %></ul>
+  <% end %><br>
+
+  <ul>
+    <%= link_to "Add a New Job for #{@company.name}!", new_company_job_path %><br><br>
+    <%= link_to "Back to the Company Index", companies_path %>
+    <hr>
+    <div class="contacts">
+      <h3>Contacts for <%= @company.name %>:</h3>
+      <%= render partial: 'jobs/contact', collection: @company.contacts %>
+    </div>
+
+    <hr>
+    <div class="newcontact">
+      <%= render partial: 'contacts/form' %>
+    </div>
+  </ul>

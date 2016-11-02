@@ -1,6 +1,17 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  
   def index
     @companies = Company.all
+    if params[:location]
+      @city = params[:location]
+      @companies_by_location = Company.where(city: @city)
+      render :one_location
+    elsif params[:sort] == "location"
+      render :location_companies
+    else params[:sort].nil?
+      render :index
+    end
   end
 
   def new
@@ -18,16 +29,13 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    company = Company.find(params[:id])
-    redirect_to company_jobs_path(company)
+    redirect_to company_jobs_path(@company)
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     @company.update(company_params)
     if @company.save
       flash[:success] = "#{@company.name} updated!"
@@ -38,17 +46,24 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    company = Company.find(params[:id])
-    company.delete
-
-    flash[:success] = "#{company.name} was successfully deleted!"
+    @company = Company.find(params[:id])
+    @company.delete
+    flash[:success] = "#{@company.name} was successfully deleted!"
     redirect_to companies_path
   end
 
-
   private
+
+  def city_params
+    return :city if params[:sort] == "location"
+  end
 
   def company_params
     params.require(:company).permit(:name, :city)
   end
+
+  def set_company
+    @company = Company.find(params[:id])
+  end
+
 end

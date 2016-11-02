@@ -1,9 +1,16 @@
-<h3>All Companies</h3>
+<div class="jumbotron">
+  <h2 align="center">All Companies</h2><br>
+</div>
 
 <% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
+<ul class=company_<%= company.id %>>
+  <strong><u> <%= link_to company.name, company_path(company) %></strong> - <%= company.city %></u><br>
+  <%= link_to "Edit #{company.name}", edit_company_path(company) %><br>
+  <%= link_to "Delete #{company.name}", company_path(company), method: "delete" %>
+</ul>
 <% end %>
+
+<hr>
+<ul>
+  <%= link_to "Add a New Company!", new_company_path %>
+</ul>

@@ -1,0 +1,16 @@
+<h4>Add a New Contact:</h4>
+
+<%= form_for @contact do |f| %>
+
+  <%= f.hidden_field :company_id, :value => @company.id %>
+  <%= f.label :name %>
+  <%= f.text_field :full_name %>
+
+  <%= f.label :position %>
+  <%= f.text_field :position%>
+
+  <%= f.label :email %>
+  <%= f.text_field :email%>
+
+    <%= f.submit 'Submit' %>
+<% end %>

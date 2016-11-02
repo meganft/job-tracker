@@ -1,0 +1,8 @@
+<div align="center">
+  <h2>Companies in <%= @city %></h2>
+  <ul>
+    <% @companies_by_location.each do |company| %>
+    <%= link_to company.name, company_path(company) %>
+    <% end %>
+  </ul>
+</div>

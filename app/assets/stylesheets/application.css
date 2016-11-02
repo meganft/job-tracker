@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
  */
+
+a{
+   color: #3385ff;
+ }
+
+a:hover{
+  color: #cc3399;
+  text-decoration: bold;
+}
+
+.jumbotron {
+  color: #00796b;
+}
+
+ul.nav a:hover { color: #cc3399 !important; }

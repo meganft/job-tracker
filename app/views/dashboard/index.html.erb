@@ -1,0 +1,35 @@
+<div class ="jumbotron">
+<h1 align="center"> Welcome to the Job Tracker! </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4" align="center">
+    <h3>Count of Jobs by Interest Level:</h3>
+    <% @jobs.level_of_interest.each do |level, count| %>
+    Level of interest: <%= level %>; Count: <%= count %> <br>
+    <% end %>
+  </div>
+
+  <div class="col-md-4" align='center'>
+    <h3>My Top 3 Most Interesting Companies:</h3>
+    <% @jobs.sorted_by_interest_level.each do |company_id, interest| %>
+    <% company = @companies.find(company_id) %>
+    <%= link_to company.name, company_path(company) %>; Interest Level = <%= interest.round(2) %> <br>
+    <% end %><br>
+    <br>
+    <h4><%= link_to "Check out the full company index here.", companies_path %>
+    </h4>
+  </div>
+
+  <div class="col-md-4" align='center'>
+    <h3>Count of Jobs by Location:</h3>
+    <% @companies.location_of_jobs_counter.each do | city, count| %>
+    <%= link_to city, ("#{companies_path}?location=#{city}") %>; <%= count %>
+    <br>
+    <% end %><br>
+
+    <h4><%= link_to "See all companies sorted by location here.", "/companies/?sort=location" %>
+    </h4></div>
+
+  </div>
+</div>
